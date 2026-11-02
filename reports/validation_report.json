@@ -1,0 +1,64 @@
+{
+    "project": "YottaFlex.ai",
+    "report_generated_at": "2026-11-02T11:26:09.473983+04:00",
+    "overall_status": "PASS",
+    "total_failures": 0,
+    "table_counts": {
+        "customers": {
+            "expected": 20000,
+            "actual": 20000,
+            "status": "PASS"
+        },
+        "categories": {
+            "expected": 20,
+            "actual": 20,
+            "status": "PASS"
+        },
+        "products": {
+            "expected": 10000,
+            "actual": 10000,
+            "status": "PASS"
+        },
+        "sessions": {
+            "expected": 500000,
+            "actual": 500000,
+            "status": "PASS"
+        },
+        "page_views": {
+            "expected": 1497995,
+            "actual": 1497995,
+            "status": "PASS"
+        },
+        "carts": {
+            "expected": 150000,
+            "actual": 150000,
+            "status": "PASS"
+        },
+        "cart_lines": {
+            "expected": 375671,
+            "actual": 375671,
+            "status": "PASS"
+        },
+        "orders": {
+            "expected": 100000,
+            "actual": 100000,
+            "status": "PASS"
+        },
+        "order_lines": {
+            "expected": 173646,
+            "actual": 173646,
+            "status": "PASS"
+        },
+        "product_relations": {
+            "expected": 20000,
+            "actual": 20000,
+            "status": "PASS"
+        },
+        "recommendations": {
+            "expected": 100000,
+            "actual": 100000,
+            "status": "PASS"
+        }
+    },
+    "validation_output": "=================================================================\nYOTTAFLEX.AI - DATA QUALITY VALIDATION\n=================================================================\n\n1. RECORD COUNT VALIDATION\n-----------------------------------------------------------------\ncustomers              Expected:     20,000 | Actual:     20,000 | PASS\ncategories             Expected:         20 | Actual:         20 | PASS\nproducts               Expected:     10,000 | Actual:     10,000 | PASS\nsessions               Expected:    500,000 | Actual:    500,000 | PASS\npage_views             Expected:  1,497,995 | Actual:  1,497,995 | PASS\ncarts                  Expected:    150,000 | Actual:    150,000 | PASS\ncart_lines             Expected:    375,671 | Actual:    375,671 | PASS\norders                 Expected:    100,000 | Actual:    100,000 | PASS\norder_lines            Expected:    173,646 | Actual:    173,646 | PASS\nproduct_relations      Expected:     20,000 | Actual:     20,000 | PASS\nrecommendations        Expected:    100,000 | Actual:    100,000 | PASS\n\n2. PRIMARY KEY VALIDATION\n-----------------------------------------------------------------\ncustomers              NULL IDs:     0 | Duplicate IDs:     0 | PASS\ncategories             NULL IDs:     0 | Duplicate IDs:     0 | PASS\nproducts               NULL IDs:     0 | Duplicate IDs:     0 | PASS\nsessions               NULL IDs:     0 | Duplicate IDs:     0 | PASS\npage_views             NULL IDs:     0 | Duplicate IDs:     0 | PASS\ncarts                  NULL IDs:     0 | Duplicate IDs:     0 | PASS\ncart_lines             NULL IDs:     0 | Duplicate IDs:     0 | PASS\norders                 NULL IDs:     0 | Duplicate IDs:     0 | PASS\norder_lines            NULL IDs:     0 | Duplicate IDs:     0 | PASS\nproduct_relations      NULL IDs:     0 | Duplicate IDs:     0 | PASS\nrecommendations        NULL IDs:     0 | Duplicate IDs:     0 | PASS\n\n3. FOREIGN KEY VALIDATION\n-----------------------------------------------------------------\nProduct -> Category                        Invalid:       0 | PASS\nSession -> Customer                        Invalid:       0 | PASS\nPageView -> Session                        Invalid:       0 | PASS\nPageView -> Product                        Invalid:       0 | PASS\nCart -> Customer                           Invalid:       0 | PASS\nCart -> Session                            Invalid:       0 | PASS\nCartLine -> Cart                           Invalid:       0 | PASS\nCartLine -> Product                        Invalid:       0 | PASS\nOrder -> Customer                          Invalid:       0 | PASS\nOrder -> Session                           Invalid:       0 | PASS\nOrderLine -> Order                         Invalid:       0 | PASS\nOrderLine -> Product                       Invalid:       0 | PASS\nRelation -> Source Product                 Invalid:       0 | PASS\nRelation -> Target Product                 Invalid:       0 | PASS\nRecommendation -> Customer                 Invalid:       0 | PASS\nRecommendation -> Product                  Invalid:       0 | PASS\n\n4. BUSINESS RULE VALIDATION\n-----------------------------------------------------------------\nProduct price must be positive             Invalid:       0 | PASS\nProduct stock must be nonnegative          Invalid:       0 | PASS\nPage-view duration between 5 and 300       Invalid:       0 | PASS\nAllowed cart statuses                      Invalid:       0 | PASS\nCart-line quantity between 1 and 3         Invalid:       0 | PASS\nCart-line unit price nonnegative           Invalid:       0 | PASS\nCart-line price matches product price      Invalid:       0 | PASS\nAllowed order statuses                     Invalid:       0 | PASS\nOrder monetary amounts nonnegative         Invalid:       0 | PASS\nOrder-line quantity between 1 and 3        Invalid:       0 | PASS\nOrder-line prices nonnegative              Invalid:       0 | PASS\nOrder-line total = unit price x quantity   Invalid:       0 | PASS\nOrder-line price matches product price     Invalid:       0 | PASS\nOrder subtotal = sum of order lines        Invalid:       0 | PASS\nOrder tax follows 18% calculation          Invalid:       0 | PASS\nOrder shipping follows threshold           Invalid:       0 | PASS\nOrder total = subtotal + tax + shipping    Invalid:       0 | PASS\nNo self-referencing product relations      Invalid:       0 | PASS\nAllowed product relation type              Invalid:       0 | PASS\nRelationship strength between 0.50 and 1.00 Invalid:       0 | PASS\nRecommendation scores nonnegative          Invalid:       0 | PASS\nRecommendation ranks positive              Invalid:       0 | PASS\n\n5. TIMESTAMP AND LIFECYCLE VALIDATION\n-----------------------------------------------------------------\nSession duration between 60 and 3600 seconds Invalid:       0 | PASS\nPage views occur within session timestamps Invalid:       0 | PASS\nEach session has 1 to 5 page views         Invalid:       0 | PASS\nCart must have a session reference         Invalid:       0 | PASS\nCart customer matches session customer     Invalid:       0 | PASS\nCart creation matches session start        Invalid:       0 | PASS\nCart update occurs within session          Invalid:       0 | PASS\nEach cart has 1 to 4 product lines         Invalid:       0 | PASS\nOrder must have a session reference        Invalid:       0 | PASS\nOrder customer matches session customer    Invalid:       0 | PASS\nOrder timestamp occurs within session      Invalid:       0 | PASS\nOnly one order per session                 Invalid:       0 | PASS\nPurchased products viewed before order     Invalid:       0 | PASS\nAdvisory: views extend beyond session end  Count: 232,056 | INFO\n\n6. RECOMMENDATION DATA VALIDATION\n-----------------------------------------------------------------\nExactly 5 recommendations per customer     Invalid:       0 | PASS\nRecommendation ranks are exactly 1 to 5    Invalid:       0 | PASS\nNo duplicate customer-product recommendations Invalid:       0 | PASS\nPreviously purchased products not recommended Invalid:       0 | PASS\nRecommended products active and in stock   Invalid:       0 | PASS\nNo duplicate product relationships         Invalid:       0 | PASS\n\n=================================================================\nVALIDATION SUMMARY\n=================================================================\nAll checks passed.\n=================================================================\n"
+}

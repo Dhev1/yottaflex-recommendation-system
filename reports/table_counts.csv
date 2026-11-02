@@ -1,0 +1,12 @@
+table_name,expected_rows,actual_rows,status
+customers,20000,20000,PASS
+categories,20,20,PASS
+products,10000,10000,PASS
+sessions,500000,500000,PASS
+page_views,1497995,1497995,PASS
+carts,150000,150000,PASS
+cart_lines,375671,375671,PASS
+orders,100000,100000,PASS
+order_lines,173646,173646,PASS
+product_relations,20000,20000,PASS
+recommendations,100000,100000,PASS

@@ -1,0 +1,27 @@
+{
+    "project": "YottaFlex.ai",
+    "split_type": "chronological",
+    "cutoff": "2026-07-01T00:00:00+05:30",
+    "timezone": "Asia/Kolkata",
+    "training_period": {
+        "condition": "timestamp < cutoff",
+        "page_views": 1223085,
+        "order_lines": 142144
+    },
+    "test_period": {
+        "condition": "order.placed_at >= cutoff",
+        "orders": 18151,
+        "ground_truth_order_lines": 31502
+    },
+    "files": [
+        "training_page_views.csv",
+        "training_order_lines.csv",
+        "test_orders.csv",
+        "test_ground_truth.csv"
+    ],
+    "leakage_prevention": [
+        "Training interactions use events before the cutoff.",
+        "Test orders and order lines are reserved for evaluation.",
+        "Existing recommendations are excluded from training inputs."
+    ]
+}

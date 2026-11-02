@@ -1,0 +1,39 @@
+{
+    "project": "YottaFlex.ai",
+    "dataset_name": "E-commerce Recommendation Dataset",
+    "manifest_generated_at": "2026-11-02T11:26:09.473983+04:00",
+    "dataset_period": {
+        "start": "2025-01-01",
+        "end": "2026-10-31 23:00:00"
+    },
+    "database": {
+        "system": "PostgreSQL",
+        "database_name": "yottaflex_db"
+    },
+    "generation": {
+        "random_seed": 42,
+        "currency": "INR",
+        "recommendation_model": "category_affinity_v1"
+    },
+    "dataset_summary": {
+        "number_of_tables": 11,
+        "total_records": 2947332,
+        "table_counts": {
+            "customers": 20000,
+            "categories": 20,
+            "products": 10000,
+            "sessions": 500000,
+            "page_views": 1497995,
+            "carts": 150000,
+            "cart_lines": 375671,
+            "orders": 100000,
+            "order_lines": 173646,
+            "product_relations": 20000,
+            "recommendations": 100000
+        }
+    },
+    "data_integrity": {
+        "validation_status": "See validation_report.json",
+        "seed_scripts_rerun_during_reporting": false
+    }
+}

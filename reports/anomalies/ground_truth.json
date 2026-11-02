@@ -1,0 +1,91 @@
+{
+    "project": "YottaFlex.ai",
+    "dataset": "Controlled Anomaly Test Cases",
+    "generated_at": "2026-11-02T11:29:31.311447+04:00",
+    "source_database": "yottaflex_db",
+    "clean_baseline_modified": false,
+    "training_test_cutoff": "2026-07-01T00:00:00+05:30",
+    "anomaly_count": 4,
+    "anomaly_catalog": [
+        {
+            "anomaly_id": "A01",
+            "anomaly_type": "purchase_before_product_view",
+            "description": "The synthetic order timestamp is moved to one second before the product was viewed.",
+            "entity_type": "order",
+            "entity_id": 1,
+            "customer_id": 10357,
+            "session_id": 335244,
+            "product_id": 6966,
+            "baseline_value": {
+                "order_placed_at": "2026-04-27T11:37:09+04:00",
+                "product_viewed_at": "2026-04-27T11:28:48+04:00"
+            },
+            "injected_value": {
+                "order_placed_at": "2026-04-27T11:28:47+04:00",
+                "product_viewed_at": "2026-04-27T11:28:48+04:00"
+            },
+            "expected_detection": "The purchased product must have a matching prior product view in the same session.",
+            "validation_rule": "PURCHASE_BEFORE_PRODUCT_VIEW"
+        },
+        {
+            "anomaly_id": "A02",
+            "anomaly_type": "missing_product_category",
+            "description": "The synthetic product record has its category reference removed.",
+            "entity_type": "product",
+            "entity_id": 1,
+            "customer_id": null,
+            "session_id": null,
+            "product_id": 1,
+            "baseline_value": {
+                "category_id": 11
+            },
+            "injected_value": {
+                "category_id": null
+            },
+            "expected_detection": "Every product in the recommendation dataset should have a valid category.",
+            "validation_rule": "PRODUCT_CATEGORY_REQUIRED"
+        },
+        {
+            "anomaly_id": "A03",
+            "anomaly_type": "training_test_leakage",
+            "description": "A synthetic training recommendation is generated before the cutoff using a product the same customer purchases in the test period.",
+            "entity_type": "recommendation",
+            "entity_id": null,
+            "customer_id": 13354,
+            "session_id": 393696,
+            "product_id": 76,
+            "baseline_value": {
+                "test_purchase_order_id": 53189,
+                "test_purchase_at": "2026-06-30T22:36:45+04:00",
+                "training_cutoff": "2026-07-01T00:00:00+05:30"
+            },
+            "injected_value": {
+                "synthetic_recommendation_generated_at": "2026-06-30T23:59:59+05:30",
+                "recommendation_uses_future_purchase_information": true
+            },
+            "expected_detection": "Training recommendations and customer preferences must not use purchases occurring at or after the training/test cutoff.",
+            "validation_rule": "NO_FUTURE_DATA_IN_TRAINING"
+        },
+        {
+            "anomaly_id": "A04",
+            "anomaly_type": "discontinued_product_recommendation",
+            "description": "The synthetic product availability state is changed to inactive and out of stock while its recommendation remains present.",
+            "entity_type": "recommendation",
+            "entity_id": 1,
+            "customer_id": 1,
+            "session_id": null,
+            "product_id": 1613,
+            "baseline_value": {
+                "product_is_active": true,
+                "stock_quantity": 295
+            },
+            "injected_value": {
+                "product_is_active": false,
+                "stock_quantity": 0,
+                "recommendation_remains_present": true
+            },
+            "expected_detection": "A recommended product must be active and have available stock.",
+            "validation_rule": "RECOMMENDED_PRODUCT_AVAILABLE"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "project": "YottaFlex.ai",
+    "evaluation_type": "chronological_holdout",
+    "cutoff": "2026-07-01T00:00:00+05:30",
+    "recommendation_model": "personalized_category_affinity_v2",
+    "k": 5,
+    "test_policy": {
+        "positive_order_statuses": [
+            "delivered",
+            "paid",
+            "shipped"
+        ],
+        "relevance": "Binary customer-product relevance; quantity does not affect relevance.",
+        "averaging": "Macro average across customers with at least one positive test product."
+    },
+    "dataset_counts": {
+        "database_customers": 20000,
+        "recommendation_rows": 100000,
+        "positive_test_orders": 13523,
+        "positive_test_customer_product_pairs": 23476,
+        "customers_with_positive_test_purchases": 9869,
+        "customers_without_positive_test_purchases": 10131,
+        "eligible_catalog_products": 7418
+    },
+    "ranking_metrics": {
+        "precision_at_5": 0.0001621238220691053,
+        "recall_at_5": 0.000253318471982977,
+        "ndcg_at_5": 0.000215418472126979,
+        "evaluated_customers": 9869
+    },
+    "catalog_metrics": {
+        "catalog_coverage": 0.9995955783229981,
+        "unique_recommended_products": 7415,
+        "eligible_catalog_products": 7418,
+        "covered_catalog_products": 7415
+    },
+    "availability_metrics": {
+        "availability_violations": 0,
+        "availability_violation_rate": 0.0,
+        "total_recommendations": 100000
+    },
+    "limitations": [
+        "Product created_at timestamps were not used because the synthetic catalog records were created after the evaluation cutoff.",
+        "Availability is checked against the current active and in-stock catalog snapshot, not historical availability at each test order time.",
+        "The evaluation measures product relevance against positive test purchases, not clicks or user satisfaction.",
+        "The personalized algorithm recommends products previously viewed during training. This evaluates conversion-oriented recommendations rather than unseen-product discovery."
+    ]
+}

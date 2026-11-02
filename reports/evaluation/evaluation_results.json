@@ -1,0 +1,47 @@
+{
+    "project": "YottaFlex.ai",
+    "evaluation_type": "chronological_holdout",
+    "cutoff": "2026-07-01T00:00:00+05:30",
+    "recommendation_model": "category_affinity_train_only",
+    "k": 5,
+    "test_policy": {
+        "positive_order_statuses": [
+            "delivered",
+            "paid",
+            "shipped"
+        ],
+        "relevance": "Binary customer-product relevance; quantity does not affect relevance.",
+        "averaging": "Macro average across customers with at least one positive test product."
+    },
+    "dataset_counts": {
+        "database_customers": 20000,
+        "recommendation_rows": 100000,
+        "positive_test_orders": 13523,
+        "positive_test_customer_product_pairs": 23476,
+        "customers_with_positive_test_purchases": 9869,
+        "customers_without_positive_test_purchases": 10131,
+        "eligible_catalog_products": 7418
+    },
+    "ranking_metrics": {
+        "precision_at_5": 0.00034451312189684875,
+        "recall_at_5": 0.000648736543964024,
+        "ndcg_at_5": 0.0005469520774595227,
+        "evaluated_customers": 9869
+    },
+    "catalog_metrics": {
+        "catalog_coverage": 0.016446481531410085,
+        "unique_recommended_products": 122,
+        "eligible_catalog_products": 7418,
+        "covered_catalog_products": 122
+    },
+    "availability_metrics": {
+        "availability_violations": 0,
+        "availability_violation_rate": 0.0,
+        "total_recommendations": 100000
+    },
+    "limitations": [
+        "Product created_at timestamps were not used because the synthetic catalog records were created after the evaluation cutoff.",
+        "Availability is checked against the current active and in-stock catalog snapshot, not historical availability at each test order time.",
+        "The evaluation measures product relevance against positive test purchases, not clicks or user satisfaction."
+    ]
+}

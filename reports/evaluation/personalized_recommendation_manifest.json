@@ -1,0 +1,30 @@
+{
+    "project": "YottaFlex.ai",
+    "model_name": "personalized_category_affinity_v2",
+    "algorithm_type": "Personalized implicit-feedback recommendation",
+    "cutoff": "2026-07-01T00:00:00+05:30",
+    "training_data": {
+        "page_views": "PageView.viewed_at < cutoff",
+        "purchases": "Order.placed_at < cutoff",
+        "purchase_statuses": [
+            "paid",
+            "shipped",
+            "delivered"
+        ]
+    },
+    "catalog_conditions": [
+        "Product.is_active = true",
+        "Product.stock_quantity > 0"
+    ],
+    "catalog_temporal_assumption": "The seeded product catalog is treated as the candidate catalog for this experiment. Product creation timestamps are excluded because all seeded products have post-cutoff timestamps.",
+    "recommendations_per_customer": 5,
+    "customer_count": 20000,
+    "eligible_catalog_count": 7418,
+    "customers_without_browsing_history": 0,
+    "customers_with_insufficient_candidates": 0,
+    "total_recommendations": 100000,
+    "ranking_method": "Products personally viewed before cutoff and not previously purchased are ranked first by preferred category, then individual customer product-view frequency. Category and global popularity are deterministic tie-breakers.",
+    "score_definition": "Number of pre-cutoff page views by the individual customer for the recommended product.",
+    "availability_limitation": "Active status and stock quantity are based on the current catalog snapshot. Historical stock availability cannot be verified.",
+    "database_modified": false
+}
